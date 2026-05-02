@@ -19,7 +19,7 @@ function escapeHtml(value) {
 
 async function chargerEtudiants() {
     try {
-        const res = await apiFetch('/api/etudiants');
+        const res = await apiFetch('/api/Etudiants');
         const data = await res.json();
 
         tbody.innerHTML = '';
@@ -49,7 +49,7 @@ form.addEventListener('submit', async (e) => {
     const programme = document.getElementById('programme').value.trim();
 
     try {
-        const res = await apiFetch('/api/etudiants', {
+        const res = await apiFetch('/api/Etudiants', {
             method: 'POST',
             body: JSON.stringify({ nom, programme })
         });
@@ -72,7 +72,7 @@ async function supprimerEtudiant(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, {
+        const res = await apiFetch('/api/Etudiants/' + id, {
             method: 'DELETE'
         });
 

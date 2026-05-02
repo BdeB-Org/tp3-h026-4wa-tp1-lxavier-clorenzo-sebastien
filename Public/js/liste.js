@@ -18,7 +18,7 @@ function escapeHtml(value) {
 
 async function chargerEtudiants() {
     try {
-        const res = await apiFetch('/api/etudiants');
+        const res = await apiFetch('/api/Etudiants');
         const data = await res.json();
 
         tbody.innerHTML = '';
@@ -45,7 +45,7 @@ async function supprimerEtudiant(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/etudiants/' + id, { method: 'DELETE' });
+        const res = await apiFetch('/api/Etudiants/' + id, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {

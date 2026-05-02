@@ -6,22 +6,22 @@ const ProjetsEtudiantsControllers = require("../Controllers/ProjetsEtudiantsCont
 //TABLE ETUDIANTS -Sebastien
 
 //GET Etudiants
-router.get("/Etudiants", ProjetsEtudiantsControllers.getEtudiants);
+router.get("/", ProjetsEtudiantsControllers.getEtudiants);
 
 //GET 1 Etudiant
-router.get("/Etudiants/:id", ProjetsEtudiantsControllers.getEtudiantById);
+router.get("/:id", ProjetsEtudiantsControllers.getEtudiantById);
 
 //POST Etudiants
-router.post("/Etudiants", ProjetsEtudiantsControllers.addEtudiant);
+router.post("/", ProjetsEtudiantsControllers.addEtudiant);
 
 //POST Etudiants
-router.post("/Etudiants2", ProjetsEtudiantsControllers.addEtudiant2);
+router.post("/2", ProjetsEtudiantsControllers.addEtudiant2);
 
 //UPDATE Etudiants
-router.put("/Etudiants2/:id", ProjetsEtudiantsControllers.updateEtudiant2);
+router.put("/2/:id", ProjetsEtudiantsControllers.updateEtudiant2);
 
 //DELETE Etudiants
-router.delete("/Etudiants2/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
+router.delete("/2/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
 
 
 
