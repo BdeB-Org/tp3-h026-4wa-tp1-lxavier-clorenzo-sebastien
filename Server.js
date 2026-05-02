@@ -8,7 +8,7 @@ require('./Config/ProjetsEtudiants.js');
 app.use(express.json());
 app.use(express.static('public'));
 
-const etudiantRoutes = require('./Routes/ProjetsEtudiantsRoutes');
+const ProjetsEtudiantsRoutes = require('./Routes/ProjetsEtudiantsRoutes');
 const authRoutes = require('./Routes/authRoutes');
 
 app.use('/api/etudiants', ProjetsEtudiantsRoutes);
