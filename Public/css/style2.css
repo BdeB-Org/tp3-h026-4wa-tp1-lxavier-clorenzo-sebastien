@@ -6,7 +6,7 @@ body {
 }
 
 button, .btn-link {
-    padding: 50px 25px;
+    padding: 20px 15px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -15,7 +15,7 @@ button, .btn-link {
     text-decoration: none;
     display: inline-block;
     justify-content: center;
-    margin-left: 430px;
+    margin-left: 490px;
     margin-top: 500px;
-    font-size: xx-large;
+    font-size: x-large;
 }
