@@ -23,15 +23,15 @@ async function chargerEtudiants() {
 
         tbody.innerHTML = '';
 
-        data.forEach(etudiant => {
+        data.forEach(Etudiant => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${Etudiant.id_etudiants}</td>
+                <td>${escapeHtml(Etudiant.Nom)}</td>
+                <td>${escapeHtml(Etudiant.Prenom)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${Etudiant.id_etudiants}">Modifier</a>
+                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,7 +45,7 @@ async function supprimerEtudiant(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, { method: 'DELETE' });
+        const res = await apiFetch('/api/Etudiants/' + id_etudiants, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {

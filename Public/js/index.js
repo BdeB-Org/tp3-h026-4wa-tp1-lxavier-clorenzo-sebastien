@@ -24,15 +24,15 @@ async function chargerEtudiants() {
 
         tbody.innerHTML = '';
 
-        data.forEach(etudiant => {
+        data.forEach(Etudiant => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${Etudiant.id_etudiants}</td>
+                <td>${escapeHtml(Etudiant.Nom)}</td>
+                <td>${escapeHtml(Etudiant.Prenom)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>
+                    <a class="btn-link" href="/edit.html?id=${Etudiant.id_etudiants}">Modifier</a>
+                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,13 +45,13 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const Nom = document.getElementById('Nom').value.trim();
+    const Prenom = document.getElementById('Prenom').value.trim();
 
     try {
         const res = await apiFetch('/api/Etudiants', {
             method: 'POST',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ Nom, Prenom })
         });
 
         const data = await res.json();
@@ -72,7 +72,7 @@ async function supprimerEtudiant(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, {
+        const res = await apiFetch('/api/Etudiants/' + id_etudiants, {
             method: 'DELETE'
         });
 
