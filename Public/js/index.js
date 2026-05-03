@@ -45,7 +45,7 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('Nom)').value.trim();
+    const Nom = document.getElementById('Nom').value.trim();
     const Prenom = document.getElementById('Prenom').value.trim();
 
     try {
