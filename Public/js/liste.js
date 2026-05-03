@@ -41,7 +41,7 @@ async function chargerEtudiants() {
     }
 }
 
-async function supprimerEtudiant(id) {
+async function supprimerEtudiant(id_etudiants) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
