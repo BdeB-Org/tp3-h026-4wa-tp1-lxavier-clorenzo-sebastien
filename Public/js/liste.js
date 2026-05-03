@@ -27,8 +27,8 @@ async function chargerEtudiants() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${escapeHtml(etudiant.Nom)}</td>
+                <td>${escapeHtml(etudiant.Prenom)}</td>
                 <td>
                     <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
                     <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>

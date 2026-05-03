@@ -28,8 +28,8 @@ async function chargerEtudiants() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${etudiant.id}</td>
-                <td>${escapeHtml(etudiant.nom)}</td>
-                <td>${escapeHtml(etudiant.programme)}</td>
+                <td>${escapeHtml(etudiant.Nom)}</td>
+                <td>${escapeHtml(etudiant.Prenom)}</td>
                 <td>
                     <a class="btn-link" href="/edit.html?id=${etudiant.id}">Modifier</a>
                     <button class="danger" onclick="supprimerEtudiant(${etudiant.id})">Supprimer</button>
@@ -45,13 +45,13 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const Nom = document.getElementById('Nom)').value.trim();
+    const Prenom = document.getElementById('Prenom').value.trim();
 
     try {
         const res = await apiFetch('/api/Etudiants', {
             method: 'POST',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ Nom, Prenom })
         });
 
         const data = await res.json();

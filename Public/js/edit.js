@@ -18,8 +18,8 @@ async function chargerEtudiant() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('nom').value = data.nom;
-        document.getElementById('programme').value = data.programme;
+        document.getElementById('Nom').value = data.Nom;
+        document.getElementById('Prenom').value = data.Prenom;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -28,13 +28,13 @@ async function chargerEtudiant() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nom = document.getElementById('nom').value.trim();
-    const programme = document.getElementById('programme').value.trim();
+    const Nom = document.getElementById('Nom').value.trim();
+    const Prenom = document.getElementById('Prenom').value.trim();
 
     try {
         const res = await apiFetch('/api/Etudiants/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ nom, programme })
+            body: JSON.stringify({ Nom, Prenom })
         });
 
         const data = await res.json();
