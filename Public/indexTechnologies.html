@@ -2,32 +2,32 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des étudiants</title>
+    <title>Gestion des technologies</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <div class="topbar">
             <div>
-                <h1>Gestion des étudiants</h1>
+                <h1>Gestion des technologies</h1>
                 <p class="small">Ajout et affichage dans un tableau</p>
             </div>
             <div class="actions">
-                <a class="btn-link" href="/liste.html">Voir la liste complète</a>
+                <a class="btn-link" href="/listeTechnologies.html">Voir la liste complète</a>
                 <button class="secondary" onclick="logout()">Déconnexion</button>
             </div>
         </div>
 
         <div id="message"></div>
 
-        <h2>Ajouter un étudiant</h2>
+        <h2>Ajouter une technologies</h2>
         <form id="formAjout">
             <input type="text" id="Nom" placeholder="Nom" required>
             <input type="text" id="Prenom" placeholder="Prenom" required>
             <button type="submit">Ajouter</button>
         </form>
 
-        <h2>Ensemble des étudiants</h2>
+        <h2>Ensemble des technologies</h2>
         <table>
             <thead>
                 <tr>
@@ -42,6 +42,6 @@
     </div>
 
     <script src="js/auth.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/indexTechnologies.js"></script>
 </body>
 </html>
