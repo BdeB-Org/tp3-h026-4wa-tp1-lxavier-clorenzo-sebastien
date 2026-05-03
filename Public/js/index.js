@@ -72,7 +72,7 @@ async function supprimerEtudiant(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id_etudiants, {
+        const res = await apiFetch('/api/Etudiants/' + id, {
             method: 'DELETE'
         });
 

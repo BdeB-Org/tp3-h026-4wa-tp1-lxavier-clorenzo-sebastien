@@ -18,10 +18,10 @@ router.post("/", ProjetsEtudiantsControllers.addEtudiant);
 router.post("/2", ProjetsEtudiantsControllers.addEtudiant2);
 
 //UPDATE Etudiants
-router.put("/2/:id", ProjetsEtudiantsControllers.updateEtudiant2);
+router.put("/:id", ProjetsEtudiantsControllers.updateEtudiant2);
 
 //DELETE Etudiants
-router.delete("/2/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
+router.delete("/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
 
 
 

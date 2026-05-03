@@ -27,8 +27,11 @@ exports.getEtudiantById = (req,res)=>{
 
 //Fonction POST pour ajouter un étudiants à la table Etudiants
 exports.addEtudiant = (req,res)=>{
-    const Nom = req.body.Nom; 
-    const Prenom = req.body.Prenom; 
+    const Nom = (req.body.Nom || '').trim(); 
+    const Prenom = (req.body.Prenom || '').trim(); 
+    if (!Nom || !Prenom) {
+        return res.status(400).json({ message: 'Nom et Prénom sont requis' });
+    }
     console.log("Insertion:",Nom,Prenom); 
     db.run("INSERT INTO Etudiants(Nom,Prenom) VALUES (?,?)",
         [Nom,Prenom],
@@ -44,8 +47,11 @@ exports.addEtudiant = (req,res)=>{
 
 //Fonction POST pour ajouter un étudiants à la table Etudiants
 exports.addEtudiant2 = (req,res)=>{
-    const Nom = req.body.Nom; 
-    const Prenom = req.body.Prenom; 
+    const Nom = (req.body.Nom || '').trim(); 
+    const Prenom = (req.body.Prenom || '').trim(); 
+    if (!Nom || !Prenom) {
+        return res.status(400).json({ message: 'Nom et Prénom sont requis' });
+    }
     console.log("Insertion:",Nom,Prenom); 
     db.run("INSERT INTO Etudiants(Nom,Prenom) VALUES (?,?)",
         [Nom,Prenom],
