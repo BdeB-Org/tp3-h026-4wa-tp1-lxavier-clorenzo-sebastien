@@ -2,17 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Modifier un étudiant</title>
+    <title>Modifier un projet</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container" style="max-width: 700px;">
         <div class="topbar">
             <div>
-                <h1>Modifier un étudiant</h1>
+                <h1>Modifier un projet</h1>
             </div>
             <div class="actions">
-                <a class="btn-link" href="/liste.html">Retour à la liste</a>
+                <a class="btn-link" href="/listeProjets.html">Retour à la liste</a>
                 <button class="secondary" onclick="logout()">Déconnexion</button>
             </div>
         </div>
@@ -20,13 +20,14 @@
         <div id="message"></div>
 
         <form id="formEdit">
-            <input type="text" id="Nom" placeholder="Nom" required>
-            <input type="text" id="Prenom" placeholder="Prenom" required>
+            <input type="text" id="Nom_Projet" placeholder="Nom projet" required>
+            <input type="text" id="description_projet" placeholder="Description du projet" required>
+            <input type="text" id="date_creation" placeholder="Date de création" required>
             <button type="submit">Enregistrer les modifications</button>
         </form>
     </div>
 
     <script src="js/auth.js"></script>
-    <script src="js/edit.js"></script>
+    <script src="js/editProjets.js"></script>
 </body>
 </html>

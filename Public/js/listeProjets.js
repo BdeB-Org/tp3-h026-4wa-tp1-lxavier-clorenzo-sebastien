@@ -16,22 +16,23 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerProjets() {
     try {
-        const res = await apiFetch('/api/Etudiants');
+        const res = await apiFetch('/api/Projets');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(Etudiant => {
+        data.forEach(Projets => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Etudiant.id_etudiants}</td>
-                <td>${escapeHtml(Etudiant.Nom)}</td>
-                <td>${escapeHtml(Etudiant.Prenom)}</td>
+                <td>${Projets.id_projets}</td>
+                <td>${escapeHtml(Projets.Nom_projet)}</td>
+                <td>${escapeHtml(Projets.description_projet)}</td>
+                <td>${escapeHtml(Projets.date_creation)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Etudiant.id_etudiants}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
+                    <a class="btn-link" href="/editProjets.html?id=${Projets.id_projets}">Modifier</a>
+                    <button class="danger" onclick="supprimerProjets(${Projets.id_projets})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -41,11 +42,11 @@ async function chargerEtudiants() {
     }
 }
 
-async function supprimerEtudiant(id_etudiants) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+async function supprimerProjets(id_projets) {
+    if (!confirm('Voulez-vous vraiment supprimer ce projet ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id_etudiants, { method: 'DELETE' });
+        const res = await apiFetch('/api/Projets/' + id_projets, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {
@@ -53,10 +54,10 @@ async function supprimerEtudiant(id_etudiants) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerProjets();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerProjets();

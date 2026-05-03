@@ -1,7 +1,7 @@
 requireAuth();
 
 const form = document.getElementById('formAjout');
-const tbody = document.getElementById('tbodyEtudiants');
+const tbody = document.getElementById('tbodyProjets');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -17,22 +17,23 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerProjets() {
     try {
-        const res = await apiFetch('/api/Etudiants');
+        const res = await apiFetch('/api/Projets');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(Etudiant => {
+        data.forEach(Projets => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Etudiant.id_etudiants}</td>
-                <td>${escapeHtml(Etudiant.Nom)}</td>
-                <td>${escapeHtml(Etudiant.Prenom)}</td>
+                <td>${Projets.id_projets}</td>
+                <td>${escapeHtml(Projets.Nom_projet)}</td>
+                <td>${escapeHtml(Projets.description_projet)}</td>
+                <td>${escapeHtml(Projets.date_creation)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Etudiant.id_etudiants}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
+                    <a class="btn-link" href="/editProjets.html?id=${Projets.id_projets}">Modifier</a>
+                    <button class="danger" onclick="supprimerProjets(${Projets.id_projets})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,13 +46,14 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('Nom').value.trim();
-    const Prenom = document.getElementById('Prenom').value.trim();
+    const Nom_projet = document.getElementById('Nom_Projet').value.trim();
+    const description_projet = document.getElementById('description_projet').value.trim();
+    const date_creation = document.getElementById('date_creation').value.trim();
 
     try {
-        const res = await apiFetch('/api/Etudiants', {
+        const res = await apiFetch('/api/Projets', {
             method: 'POST',
-            body: JSON.stringify({ Nom, Prenom })
+            body: JSON.stringify({ Nom_projet, description_projet, date_creation })
         });
 
         const data = await res.json();
@@ -61,18 +63,18 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        showMessage('Étudiant ajouté avec succès');
-        chargerEtudiants();
+        showMessage('Projet ajouté avec succès');
+        chargerProjets();
     } catch (err) {
         showMessage(err.message, true);
     }
 });
 
-async function supprimerEtudiant(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+async function supprimerProjets(id) {
+    if (!confirm('Voulez-vous vraiment supprimer ce projet ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, {
+        const res = await apiFetch('/api/Projets/' + id, {
             method: 'DELETE'
         });
 
@@ -83,10 +85,10 @@ async function supprimerEtudiant(id) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerProjets();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerProjets();

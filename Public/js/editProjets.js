@@ -9,9 +9,9 @@ function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
-async function chargerEtudiant() {
+async function chargerProjets() {
     try {
-        const res = await apiFetch('/api/Etudiants/' + id);
+        const res = await apiFetch('/api/Projets/' + id);
         const data = await res.json();
 
         if (!res.ok) {
@@ -32,7 +32,7 @@ form.addEventListener('submit', async (e) => {
     const Prenom = document.getElementById('Prenom').value.trim();
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, {
+        const res = await apiFetch('/api/Projets/' + id, {
             method: 'PUT',
             body: JSON.stringify({ Nom, Prenom })
         });
@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID étudiant manquant', true);
+    showMessage('ID projet manquant', true);
 } else {
-    chargerEtudiant();
+    chargerProjets();
 }
