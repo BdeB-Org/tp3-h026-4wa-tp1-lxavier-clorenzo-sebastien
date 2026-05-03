@@ -30,7 +30,7 @@ async function chargerEtudiants() {
                 <td>${escapeHtml(Etudiant.Nom)}</td>
                 <td>${escapeHtml(Etudiant.Prenom)}</td>
                 <td>
-                    <a class="btn-link" href="/edit.html?id=${Etudiant.id_etudiants}">Modifier</a>
+                    <a class="btn-link" href="/editProjets.html?id=${Etudiant.id_etudiants}">Modifier</a>
                     <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
                 </td>
             `;
