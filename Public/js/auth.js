@@ -29,7 +29,7 @@ async function apiFetch(url, options = {}) {
     if (token) {
         headers.Authorization = `Bearer ${token}`;
     }
-
+    
     const response = await fetch(url, {
         ...options,
         headers
