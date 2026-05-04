@@ -46,14 +46,14 @@ async function chargerTechnologies() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('nom_technologies').value.trim();
-    const Description = document.getElementById('description_technologies').value.trim();
-    const Id_Projet = document.getElementById('id_projets').value.trim();
+    const nom_technologies = document.getElementById('nom_technologies').value.trim();
+    const description_technologies = document.getElementById('description_technologies').value.trim();
+    const id_projets = document.getElementById('id_projets').value.trim();
 
     try {
         const res = await apiFetch('/api/Technologies', {
             method: 'POST',
-            body: JSON.stringify({ Nom, Description, Id_Projet })
+            body: JSON.stringify({ nom_technologies, description_technologies, id_projets })
         });
 
         const data = await res.json();
@@ -63,7 +63,7 @@ form.addEventListener('submit', async (e) => {
         }
 
         form.reset();
-        showMessage('Étudiant ajouté avec succès');
+        showMessage('Technologie ajouté avec succès');
         chargerTechnologies();
     } catch (err) {
         showMessage(err.message, true);
@@ -71,7 +71,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function supprimerTechnologie(id) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+    if (!confirm('Voulez-vous vraiment supprimer cet technologie ?')) return;
 
     try {
         const res = await apiFetch('/api/Technologies/' + id, {

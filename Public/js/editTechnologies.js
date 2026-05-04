@@ -18,8 +18,9 @@ async function chargerTechnologie() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('nom_technologies').value = data.Nom;
-        document.getElementById('description_technologies').value = data.Description;
+        document.getElementById('nom_technologies').value = data.nom_technologies;
+        document.getElementById('description_technologies').value = data.description_technologies;
+        document.getElementById('id_projets').value = data.id_projets;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -28,14 +29,14 @@ async function chargerTechnologie() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('nom_technologies').value.trim();
-    const Description = document.getElementById('description_technologies').value.trim();
-    const Id_Projet = document.getElementById('id_projets').value.trim();
+    const nom_technologies = document.getElementById('nom_technologies').value.trim();
+    const description_technologies = document.getElementById('description_technologies').value.trim();
+    const id_projets = document.getElementById('id_projets').value.trim();
 
     try {
         const res = await apiFetch('/api/Technologies/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ Nom, Description, Id_Projet })
+            body: JSON.stringify({ nom_technologies, description_technologies, id_projets })
         });
 
         const data = await res.json();
