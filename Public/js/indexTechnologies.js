@@ -1,7 +1,7 @@
 requireAuth();
 
 const form = document.getElementById('formAjout');
-const tbody = document.getElementById('tbodyEtudiants');
+const tbody = document.getElementById('tbodyTechnologies');
 const message = document.getElementById('message');
 
 function showMessage(text, isError = false) {
@@ -17,22 +17,23 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerTechnologies() {
     try {
-        const res = await apiFetch('/api/Etudiants');
+        const res = await apiFetch('/api/Technologies');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(Etudiant => {
+        data.forEach(Technologie => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Etudiant.id_etudiants}</td>
-                <td>${escapeHtml(Etudiant.Nom)}</td>
-                <td>${escapeHtml(Etudiant.Prenom)}</td>
+                <td>${Technologie.id_technologies}</td>
+                <td>${escapeHtml(Technologie.nom_technologies)}</td>
+                <td>${escapeHtml(Technologie.description_technologies)}</td>
+                <td>${escapeHtml(Technologie.id_projets)}</td>
                 <td>
-                    <a class="btn-link" href="/editTechnologies.html?id=${Etudiant.id_etudiants}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
+                    <a class="btn-link" href="/editTechnologies.html?id=${Technologie.id_technologies}">Modifier</a>
+                    <button class="danger" onclick="supprimerTechnologie(${Technologie.id_technologies})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -45,13 +46,14 @@ async function chargerEtudiants() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('Nom').value.trim();
-    const Prenom = document.getElementById('Prenom').value.trim();
+    const Nom = document.getElementById('nom_technologies').value.trim();
+    const Description = document.getElementById('description_technologies').value.trim();
+    const Id_Projet = document.getElementById('id_projets').value.trim();
 
     try {
-        const res = await apiFetch('/api/Etudiants', {
+        const res = await apiFetch('/api/Technologies', {
             method: 'POST',
-            body: JSON.stringify({ Nom, Prenom })
+            body: JSON.stringify({ Nom, Description, Id_Projet })
         });
 
         const data = await res.json();
@@ -62,17 +64,17 @@ form.addEventListener('submit', async (e) => {
 
         form.reset();
         showMessage('Étudiant ajouté avec succès');
-        chargerEtudiants();
+        chargerTechnologies();
     } catch (err) {
         showMessage(err.message, true);
     }
 });
 
-async function supprimerEtudiant(id) {
+async function supprimerTechnologie(id) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, {
+        const res = await apiFetch('/api/Technologies/' + id, {
             method: 'DELETE'
         });
 
@@ -83,10 +85,10 @@ async function supprimerEtudiant(id) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerTechnologies();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerTechnologies();

@@ -9,17 +9,17 @@ function showMessage(text, isError = false) {
     message.innerHTML = `<div class="message ${isError ? 'error' : ''}">${text}</div>`;
 }
 
-async function chargerEtudiant() {
+async function chargerTechnologie() {
     try {
-        const res = await apiFetch('/api/Etudiants/' + id);
+        const res = await apiFetch('/api/Technologies/' + id);
         const data = await res.json();
 
         if (!res.ok) {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('Nom').value = data.Nom;
-        document.getElementById('Prenom').value = data.Prenom;
+        document.getElementById('nom_technologies').value = data.Nom;
+        document.getElementById('description_technologies').value = data.Description;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -28,13 +28,14 @@ async function chargerEtudiant() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('Nom').value.trim();
-    const Prenom = document.getElementById('Prenom').value.trim();
+    const Nom = document.getElementById('nom_technologies').value.trim();
+    const Description = document.getElementById('description_technologies').value.trim();
+    const Id_Projet = document.getElementById('id_projets').value.trim();
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id, {
+        const res = await apiFetch('/api/Technologies/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ Nom, Prenom })
+            body: JSON.stringify({ Nom, Description, Id_Projet })
         });
 
         const data = await res.json();
@@ -53,7 +54,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 if (!id) {
-    showMessage('ID étudiant manquant', true);
+    showMessage('ID technologie manquant', true);
 } else {
-    chargerEtudiant();
+    chargerTechnologie();
 }

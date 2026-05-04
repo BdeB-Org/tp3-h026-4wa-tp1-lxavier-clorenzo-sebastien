@@ -16,22 +16,22 @@ function escapeHtml(value) {
         .replaceAll("'", '&#039;');
 }
 
-async function chargerEtudiants() {
+async function chargerTechnologies() {
     try {
-        const res = await apiFetch('/api/Etudiants');
+        const res = await apiFetch('/api/Technologies');
         const data = await res.json();
 
         tbody.innerHTML = '';
 
-        data.forEach(Etudiant => {
+        data.forEach(Technologie => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${Etudiant.id_etudiants}</td>
-                <td>${escapeHtml(Etudiant.Nom)}</td>
-                <td>${escapeHtml(Etudiant.Prenom)}</td>
+                <td>${Technologie.id_technologies}</td>
+                <td>${escapeHtml(Technologie.nom_technologies)}</td>
+                <td>${escapeHtml(Technologie.description_technologies)}</td>
                 <td>
-                    <a class="btn-link" href="/editTechnologies.html?id=${Etudiant.id_etudiants}">Modifier</a>
-                    <button class="danger" onclick="supprimerEtudiant(${Etudiant.id_etudiants})">Supprimer</button>
+                    <a class="btn-link" href="/editTechnologies.html?id=${Technologie.id_technologies}">Modifier</a>
+                    <button class="danger" onclick="supprimerTechnologie(${Technologie.id_technologies})">Supprimer</button>
                 </td>
             `;
             tbody.appendChild(tr);
@@ -41,11 +41,11 @@ async function chargerEtudiants() {
     }
 }
 
-async function supprimerEtudiant(id_etudiants) {
+async function supprimerTechnologie(id_technologies) {
     if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
 
     try {
-        const res = await apiFetch('/api/Etudiants/' + id_etudiants, { method: 'DELETE' });
+        const res = await apiFetch('/api/Technologies/' + id_technologies, { method: 'DELETE' });
         const data = await res.json();
 
         if (!res.ok) {
@@ -53,10 +53,10 @@ async function supprimerEtudiant(id_etudiants) {
         }
 
         showMessage(data.message);
-        chargerEtudiants();
+        chargerTechnologies();
     } catch (err) {
         showMessage(err.message, true);
     }
 }
 
-chargerEtudiants();
+chargerTechnologies();
