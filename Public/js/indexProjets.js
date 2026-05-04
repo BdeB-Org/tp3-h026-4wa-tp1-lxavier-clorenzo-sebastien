@@ -28,7 +28,7 @@ async function chargerProjets() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${Projets.id_projets}</td>
-                <td>${escapeHtml(Projets.Nom_projet)}</td>
+                <td>${escapeHtml(Projets.Nom_Projet)}</td>
                 <td>${escapeHtml(Projets.description_projet)}</td>
                 <td>${escapeHtml(Projets.date_creation)}</td>
                 <td>
@@ -46,14 +46,14 @@ async function chargerProjets() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom_projet = document.getElementById('Nom_Projet').value.trim();
+    const Nom_Projet = document.getElementById('Nom_Projet').value.trim();
     const description_projet = document.getElementById('description_projet').value.trim();
     const date_creation = document.getElementById('date_creation').value.trim();
 
     try {
         const res = await apiFetch('/api/Projets', {
             method: 'POST',
-            body: JSON.stringify({ Nom_projet, description_projet, date_creation })
+            body: JSON.stringify({ Nom_Projet, description_projet, date_creation })
         });
 
         const data = await res.json();

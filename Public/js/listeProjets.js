@@ -27,7 +27,7 @@ async function chargerProjets() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${Projets.id_projets}</td>
-                <td>${escapeHtml(Projets.Nom_projet)}</td>
+                <td>${escapeHtml(Projets.Nom_Projet)}</td>
                 <td>${escapeHtml(Projets.description_projet)}</td>
                 <td>${escapeHtml(Projets.date_creation)}</td>
                 <td>

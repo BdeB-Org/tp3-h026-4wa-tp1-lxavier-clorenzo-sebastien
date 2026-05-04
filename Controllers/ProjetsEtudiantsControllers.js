@@ -229,11 +229,11 @@ exports.addProjets = (req,res)=>{
     const Nom_Projet = req.body.Nom_Projet; 
     const description_projet = req.body.description_projet; 
     const date_creation = req.body.date_creation; 
-    const id_equipes = req.body.id_equipes; 
+    
      
-    console.log("Insertion:",Nom_Projet,description_projet, date_creation, id_equipes); 
-    db.run("INSERT INTO Projets(Nom_Projet,description_projet,date_creation,id_equipes) VALUES (?,?,?,?)",
-        [Nom_Projet,description_projet,date_creation,id_equipes],
+    console.log("Insertion:",Nom_Projet,description_projet, date_creation); 
+    db.run("INSERT INTO Projets(Nom_Projet,description_projet,date_creation) VALUES (?,?,?)",
+        [Nom_Projet,description_projet,date_creation],
         function(err) {
             if(err) {
                 console.log(err);
@@ -249,9 +249,9 @@ exports.addProjets = (req,res)=>{
 //Fonction UPDATE pour ajouter un projet à la table Projets
 exports.updateProjets = (req, res) => {
     const id_projets = req.params.id;
-    const { Nom_Projet,description_projet,date_creation,id_equipes } = req.body;
-db.run('UPDATE Projets SET Nom_Projet=?, description_projet=?, date_creation=?, id_equipes=? WHERE id_projets=?', 
-    [Nom_Projet,description_projet,date_creation,id_equipes, id_projets],
+    const { Nom_Projet, description_projet, date_creation} = req.body;
+db.run('UPDATE Projets SET Nom_Projet=?, description_projet=?, date_creation=? WHERE id_projets=?', 
+    [Nom_Projet, description_projet, date_creation, id_projets],
     function(err){
         if(err) {
 

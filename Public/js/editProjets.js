@@ -18,8 +18,9 @@ async function chargerProjets() {
             throw new Error(data.message || 'Erreur lors du chargement');
         }
 
-        document.getElementById('Nom').value = data.Nom;
-        document.getElementById('Prenom').value = data.Prenom;
+        document.getElementById('Nom_Projet').value = data.Nom_Projet;
+        document.getElementById('description_projet').value = data.description_projet;
+        document.getElementById('date_creation').value = data.date_creation;
     } catch (err) {
         showMessage(err.message, true);
     }
@@ -28,13 +29,14 @@ async function chargerProjets() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const Nom = document.getElementById('Nom').value.trim();
-    const Prenom = document.getElementById('Prenom').value.trim();
+    const Nom_Projet = document.getElementById('Nom_Projet').value.trim();
+    const description_projet = document.getElementById('description_projet').value.trim();
+    const date_creation = document.getElementById('date_creation').value.trim();
 
     try {
         const res = await apiFetch('/api/Projets/' + id, {
             method: 'PUT',
-            body: JSON.stringify({ Nom, Prenom })
+            body: JSON.stringify({ Nom_Projet, description_projet, date_creation })
         });
 
         const data = await res.json();

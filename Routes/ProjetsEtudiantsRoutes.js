@@ -36,10 +36,10 @@ router.get("/Technologies", ProjetsEtudiantsControllers.getTechnos);
 //POST Technologies
 router.post("/Technologies", ProjetsEtudiantsControllers.addTechnos);
 
-//DELETE Projets
+//DELETE Technologies
 router.delete("/Technologies/:id", ProjetsEtudiantsControllers.deleteTechnos);
 
-//UPDATE Projetss
+//UPDATE Technologies
 router.put("/Technologies/:id", ProjetsEtudiantsControllers.updateTechnos);
 
 

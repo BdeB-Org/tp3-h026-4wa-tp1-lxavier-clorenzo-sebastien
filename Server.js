@@ -12,8 +12,13 @@ app.use(express.static('public'));
 const ProjetsEtudiantsRoutes = require('./Routes/ProjetsEtudiantsRoutes');
 const authRoutes = require('./Routes/authRoutes');
 
-app.use('/api/etudiants', authMiddleware, ProjetsEtudiantsRoutes);
+// Routes d'authentification (SANS middleware)
 app.use('/api/auth', authRoutes);
+
+// Routes API avec middleware d'authentification
+app.use('/api/Etudiants', authMiddleware, ProjetsEtudiantsRoutes);
+app.use('/api/Projets', authMiddleware, ProjetsEtudiantsRoutes);
+app.use('/api/Technologies', authMiddleware, ProjetsEtudiantsRoutes);
 
 // Redirection par défaut
 app.get('/', (req, res) => {

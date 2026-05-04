@@ -19,7 +19,24 @@ db.serialize(() => {
         )
     `);
 
-        db.run(`
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Projets (
+            id_projets INTEGER PRIMARY KEY AUTOINCREMENT,
+            Nom_Projet TEXT,
+            description_projet TEXT,
+            date_creation TEXT,
+            id_equipes INTEGER
+        )
+    `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Technologies (
+            id_technologies INTEGER PRIMARY KEY AUTOINCREMENT,
+            Nom_Technologies TEXT
+        )
+    `);
+
+    db.run(`
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE,
@@ -31,6 +48,7 @@ db.serialize(() => {
         "INSERT OR IGNORE INTO users (username, password) VALUES (?, ?)",
         ['admin', 'admin123']
     );
+
 });
 
 module.exports = db;
