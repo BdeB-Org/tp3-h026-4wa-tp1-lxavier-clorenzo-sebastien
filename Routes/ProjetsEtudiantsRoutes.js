@@ -1,27 +1,31 @@
 const express = require("express");
 const router = express.Router();
+const authMiddleware = require("../Middleware/middlewares");
 
 const ProjetsEtudiantsControllers = require("../Controllers/ProjetsEtudiantsControllers");
+
+// Appliquer l'authentification avant toutes les routes API protégées (Fait par l'AI de VS Code)
+router.use(authMiddleware);
 
 //TABLE ETUDIANTS -Sebastien
 
 //GET Etudiants
-router.get("/", ProjetsEtudiantsControllers.getEtudiants);
+router.get("/Etudiants", ProjetsEtudiantsControllers.getEtudiants);
 
 //GET 1 Etudiant
-router.get("/:id", ProjetsEtudiantsControllers.getEtudiantById);
+router.get("/Etudiants/:id", ProjetsEtudiantsControllers.getEtudiantById);
 
 //POST Etudiants
-router.post("/", ProjetsEtudiantsControllers.addEtudiant);
+router.post("/Etudiants", ProjetsEtudiantsControllers.addEtudiant);
 
 //POST Etudiants
-router.post("/2", ProjetsEtudiantsControllers.addEtudiant2);
+router.post("/Etudiants/2", ProjetsEtudiantsControllers.addEtudiant2);
 
 //UPDATE Etudiants
-router.put("/:id", ProjetsEtudiantsControllers.updateEtudiant2);
+router.put("/Etudiants/:id", ProjetsEtudiantsControllers.updateEtudiant2);
 
 //DELETE Etudiants
-router.delete("/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
+router.delete("/Etudiants/:id", ProjetsEtudiantsControllers.deleteEtudiant2ById);
 
 
 

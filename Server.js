@@ -15,10 +15,8 @@ const authRoutes = require('./Routes/authRoutes');
 // Routes d'authentification (SANS middleware)
 app.use('/api/auth', authRoutes);
 
-// Routes API avec middleware d'authentification
-app.use('/api/Etudiants', authMiddleware, ProjetsEtudiantsRoutes);
-app.use('/api/Projets', authMiddleware, ProjetsEtudiantsRoutes);
-app.use('/api/Technologies', authMiddleware, ProjetsEtudiantsRoutes);
+// Routes API protégées
+app.use('/api', ProjetsEtudiantsRoutes);
 
 // Redirection par défaut
 app.get('/', (req, res) => {
