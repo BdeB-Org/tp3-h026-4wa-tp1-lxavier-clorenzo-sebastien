@@ -25,6 +25,13 @@ form {
     margin-bottom: 20px;
 }
 
+
+#formAjout .btn-link {
+    width: 280px;
+    max-width: 90%;
+    justify-self: center;
+}
+
 input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -37,6 +44,18 @@ button, .btn-link {
     border-radius: 6px;
     cursor: pointer;
     background: #2563eb;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+button, .btn-link2 {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #dc2626;
     color: white;
     text-decoration: none;
     display: inline-block;
