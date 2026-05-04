@@ -13,6 +13,7 @@
                 <p class="small">Ajout et affichage dans un tableau</p>
             </div>
             <div class="actions">
+                <a class="btn-link" href="/indexTables.html">Retour</a>
                 <a class="btn-link" href="/listeTechnologies.html">Voir la liste complète</a>
                 <button class="secondary" onclick="logout()">Déconnexion</button>
             </div>
@@ -22,8 +23,9 @@
 
         <h2>Ajouter une technologies</h2>
         <form id="formAjout">
-            <input type="text" id="Nom" placeholder="Nom" required>
-            <input type="text" id="Prenom" placeholder="Prenom" required>
+            <input type="text" id="nom_technologies" placeholder="Nom technologie" required>
+            <input type="text" id="description_technologies" placeholder="Description de la technologie" required>
+            <input type="text" id="id_projets" placeholder="Id projet attitré">
             <button type="submit">Ajouter</button>
         </form>
 
@@ -32,12 +34,13 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Nom technologie</th>
+                    <th>Description de la technologie</th>
+                    <th>Id projet attitré</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="tbodyEtudiants"></tbody>
+            <tbody id="tbodyTechnologies"></tbody>
         </table>
     </div>
 
