@@ -29,6 +29,7 @@ async function chargerTechnologies() {
                 <td>${Technologie.id_technologies}</td>
                 <td>${escapeHtml(Technologie.nom_technologies)}</td>
                 <td>${escapeHtml(Technologie.description_technologies)}</td>
+                <td>${escapeHtml(Technologie.id_projets)}</td>
                 <td>
                     <a class="btn-link" href="/editTechnologies.html?id=${Technologie.id_technologies}">Modifier</a>
                     <button class="danger" onclick="supprimerTechnologie(${Technologie.id_technologies})">Supprimer</button>
@@ -42,7 +43,7 @@ async function chargerTechnologies() {
 }
 
 async function supprimerTechnologie(id_technologies) {
-    if (!confirm('Voulez-vous vraiment supprimer cet étudiant ?')) return;
+    if (!confirm('Voulez-vous vraiment supprimer cet technologie ?')) return;
 
     try {
         const res = await apiFetch('/api/Technologies/' + id_technologies, { method: 'DELETE' });
