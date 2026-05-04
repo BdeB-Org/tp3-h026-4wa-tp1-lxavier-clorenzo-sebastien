@@ -5,17 +5,15 @@ body {
     color: #222;
 }
 
-button, .btn-link {
-    padding: 20px 15px;
+button {
+    padding: 30px 15px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     background: #2563eb;
     color: white;
     text-decoration: none;
-    display: inline-block;
-    justify-content: center;
-    margin-left: 490px;
-    margin-top: 500px;
     font-size: x-large;
+    margin-left: 320px;
+    margin-top: 320px;
 }
